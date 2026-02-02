@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="da">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sundhedsberegner.dk - BMI, BMR, Kalorieberegner & Idealvægt</title>
-    <meta name="description" content="Gratis sundhedsberegnere: BMI-beregner, kalorieberegner, BMR-beregner, idealvægt og kropsfedtprocent. Beregn dit kaloriebehov og find din idealvægt.">
-    <meta name="keywords" content="BMI beregner, kalorieberegner, BMR beregner, idealvægt, kropsfedtprocent, sundhed, vægttab">
-    <link rel="canonical" href="https://sundhedsberegner.holstjensen.eu">
+    <title>Sundhedsberegner.dk - BMI, BMR, Kalorieberegner, Vandindtag & Søvn</title>
+    <meta name="description" content="Gratis sundhedsberegnere: BMI-beregner, kalorieberegner, BMR-beregner, vandindtag, søvnbehov, kaffein-nedbrydning og idealvægt. Alle beregninger er gratis.">
+    <meta name="keywords" content="BMI beregner, kalorieberegner, BMR beregner, vandindtag beregner, søvnbehov, kaffein beregner, idealvægt, sundhed">
+    <link rel="canonical" href="https://sundhed.holstjensen.eu">
     
-    <meta property="og:title" content="Sundhedsberegner.dk - BMI, Kalorier & Idealvægt">
-    <meta property="og:description" content="Gratis sundhedsberegnere på dansk. BMI, kalorieberegner, BMR og idealvægt.">
+    <meta property="og:title" content="Sundhedsberegner.dk - BMI, Kalorier, Vandindtag & Søvn">
+    <meta property="og:description" content="Gratis sundhedsberegnere på dansk. BMI, kalorier, vandindtag, søvnbehov og kaffein.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="da_DK">
     
@@ -21,7 +21,8 @@
                     colors: {
                         'health-green': '#10b981',
                         'health-blue': '#3b82f6',
-                        'health-purple': '#8b5cf6'
+                        'health-purple': '#8b5cf6',
+                        'health-amber': '#f59e0b'
                     }
                 }
             }
@@ -43,10 +44,6 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .tab-active {
-            border-bottom: 3px solid #10b981;
-            color: #10b981;
-        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen">
@@ -58,11 +55,12 @@
                     <span class="text-3xl">🏥</span>
                     Sundhedsberegner<span class="text-gray-400 font-normal">.dk</span>
                 </a>
-                <div class="hidden md:flex gap-6">
+                <div class="hidden md:flex gap-6 text-sm">
                     <a href="#bmi" class="text-gray-600 hover:text-health-green">BMI</a>
-                    <a href="#bmr" class="text-gray-600 hover:text-health-green">BMR</a>
                     <a href="#kalorier" class="text-gray-600 hover:text-health-green">Kalorier</a>
-                    <a href="#idealvaegt" class="text-gray-600 hover:text-health-green">Idealvægt</a>
+                    <a href="#vandindtag" class="text-gray-600 hover:text-health-green">Vandindtag</a>
+                    <a href="#soevn" class="text-gray-600 hover:text-health-green">Søvn</a>
+                    <a href="#kaffein" class="text-gray-600 hover:text-health-green">Kaffein</a>
                 </div>
             </div>
         </div>
@@ -74,8 +72,8 @@
             Gratis Sundhedsberegnere
         </h1>
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            Beregn din BMI, kaloriebehov, stofskifte og idealvægt. 
-            Alle beregninger er gratis og gemmes ikke.
+            Beregn din BMI, kaloriebehov, vandindtag, søvnbehov og kaffein-nedbrydning. 
+            7 beregnere — helt gratis og uden login.
         </p>
     </header>
 
@@ -126,64 +124,6 @@
                         <li>• 25-29.9: Overvægtig</li>
                         <li>• Over 30: Fedme</li>
                     </ul>
-                </div>
-            </section>
-
-            <!-- BMR Calculator -->
-            <section id="bmr" class="calculator-card bg-white rounded-2xl p-6 shadow-lg">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">🔥</span>
-                    <div>
-                        <h2 class="text-2xl font-bold text-gray-800">BMR-beregner</h2>
-                        <p class="text-gray-500">Basalstofskifte</p>
-                    </div>
-                </div>
-                
-                <div class="space-y-4">
-                    <div class="flex gap-4">
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="bmr-gender" value="male" checked class="w-4 h-4 text-health-green">
-                            <span>Mand</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="bmr-gender" value="female" class="w-4 h-4 text-health-green">
-                            <span>Kvinde</span>
-                        </label>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Alder</label>
-                            <input type="number" id="bmr-age" placeholder="30" 
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-health-green">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Højde (cm)</label>
-                            <input type="number" id="bmr-height" placeholder="175" 
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-health-green">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Vægt (kg)</label>
-                        <input type="number" id="bmr-weight" placeholder="70" 
-                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-health-green">
-                    </div>
-                    <button onclick="calculateBMR()" 
-                        class="w-full bg-health-green text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
-                        Beregn BMR
-                    </button>
-                </div>
-                
-                <div id="bmr-result" class="mt-6 hidden">
-                    <div class="result-box bg-gray-50 rounded-lg p-4">
-                        <p class="text-gray-600">Dit basalstofskifte er</p>
-                        <p id="bmr-value" class="text-4xl font-bold text-health-green"></p>
-                        <p class="text-gray-700">kalorier pr. dag</p>
-                    </div>
-                </div>
-                
-                <div class="mt-6 text-sm text-gray-500">
-                    <h3 class="font-semibold mb-2">Hvad er BMR?</h3>
-                    <p>BMR (Basal Metabolic Rate) er de kalorier din krop forbrænder i hvile for at opretholde livsfunktioner som vejrtrækning og hjerteslag.</p>
                 </div>
             </section>
 
@@ -261,6 +201,270 @@
                 </div>
             </section>
 
+            <!-- Water Intake Calculator -->
+            <section id="vandindtag" class="calculator-card bg-white rounded-2xl p-6 shadow-lg">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-4xl">💧</span>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Vandindtag Beregner</h2>
+                        <p class="text-gray-500">Hvor meget vand skal du drikke?</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Vægt (kg)</label>
+                        <input type="number" id="water-weight" value="70" 
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-health-blue">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Aktivitetsniveau</label>
+                        <select id="water-activity" class="w-full px-4 py-3 border border-gray-200 rounded-lg">
+                            <option value="0.9">Stillesiddende (kontor)</option>
+                            <option value="1.0">Let aktiv (gåture)</option>
+                            <option value="1.15" selected>Moderat aktiv (motion 3x/uge)</option>
+                            <option value="1.3">Aktiv (daglig motion)</option>
+                            <option value="1.5">Meget aktiv (hård træning)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Klima</label>
+                        <select id="water-climate" class="w-full px-4 py-3 border border-gray-200 rounded-lg">
+                            <option value="0.95">Koldt (under 10°C)</option>
+                            <option value="1.0" selected>Tempereret (10-25°C)</option>
+                            <option value="1.15">Varmt (25-35°C)</option>
+                            <option value="1.3">Tropisk (over 35°C)</option>
+                        </select>
+                    </div>
+                    <button onclick="calculateWater()" 
+                        class="w-full bg-health-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+                        Beregn Vandindtag
+                    </button>
+                </div>
+                
+                <div id="water-result" class="mt-6 hidden">
+                    <div class="result-box bg-gray-50 rounded-lg p-4">
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <p class="text-gray-600">Dagligt vandindtag</p>
+                                <p id="water-liters" class="text-3xl font-bold text-health-blue"></p>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Glas vand (250ml)</p>
+                                <p id="water-glasses" class="text-3xl font-bold text-health-blue"></p>
+                            </div>
+                        </div>
+                        <div id="water-schedule" class="mt-4 pt-4 border-t grid grid-cols-4 gap-2 text-center text-sm"></div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-sm text-gray-500">
+                    <h3 class="font-semibold mb-2">💡 Tips:</h3>
+                    <ul class="space-y-1">
+                        <li>• Start dagen med et stort glas vand</li>
+                        <li>• Hold en vandflaske ved dit skrivebord</li>
+                        <li>• Frugt bidrager også til væskeindtag</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Sleep Calculator -->
+            <section id="soevn" class="calculator-card bg-white rounded-2xl p-6 shadow-lg">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-4xl">😴</span>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Søvnbehov Beregner</h2>
+                        <p class="text-gray-500">Optimale sengetider</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Alder (år)</label>
+                        <input type="number" id="sleep-age" value="30" 
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-health-purple">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Ønsket opvågningstid</label>
+                        <input type="time" id="sleep-wake" value="07:00" 
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-health-purple">
+                    </div>
+                    <button onclick="calculateSleep()" 
+                        class="w-full bg-health-purple text-white py-3 rounded-lg font-semibold hover:bg-purple-600 transition-colors">
+                        Beregn Søvntider
+                    </button>
+                </div>
+                
+                <div id="sleep-result" class="mt-6 hidden">
+                    <div class="result-box bg-gray-50 rounded-lg p-4">
+                        <p class="text-gray-600 mb-2">Anbefalet søvn: <span id="sleep-recommended" class="font-bold text-health-purple"></span></p>
+                        <p class="text-sm text-gray-500 mb-4">Gå i seng kl.:</p>
+                        <div id="sleep-times" class="grid grid-cols-3 gap-3"></div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-sm text-gray-500">
+                    <h3 class="font-semibold mb-2">💤 Søvncyklusser:</h3>
+                    <p>En søvncyklus varer ca. 90 minutter. Ved at vågne mellem cyklusser føler du dig mere udhvilet.</p>
+                </div>
+            </section>
+
+            <!-- Caffeine Calculator -->
+            <section id="kaffein" class="calculator-card bg-white rounded-2xl p-6 shadow-lg md:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-4xl">☕</span>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Kaffein-nedbrydning Beregner</h2>
+                        <p class="text-gray-500">Se hvornår kaffein forlader dit system</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Drik</label>
+                        <select id="caffeine-drink" class="w-full px-4 py-3 border border-gray-200 rounded-lg">
+                            <option value="95">☕ Kop kaffe (95mg)</option>
+                            <option value="63">☕ Espresso (63mg)</option>
+                            <option value="126">☕ Dobbelt espresso (126mg)</option>
+                            <option value="47">🍵 Sort te (47mg)</option>
+                            <option value="28">🍵 Grøn te (28mg)</option>
+                            <option value="80">⚡ Energidrik (80mg)</option>
+                            <option value="160">⚡ Monster 500ml (160mg)</option>
+                            <option value="32">🥤 Cola (32mg)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Antal</label>
+                        <input type="number" id="caffeine-count" value="1" min="1" max="10"
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tidspunkt</label>
+                        <input type="time" id="caffeine-time" value="08:00" 
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg">
+                    </div>
+                    <div class="flex items-end">
+                        <button onclick="calculateCaffeine()" 
+                            class="w-full bg-health-amber text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">
+                            Beregn
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="caffeine-result" class="hidden">
+                    <div class="result-box">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                            <div class="bg-amber-100 rounded-lg p-4 text-center">
+                                <p class="text-sm text-gray-600">Total kaffein</p>
+                                <p id="caffeine-total" class="text-2xl font-bold text-amber-700"></p>
+                            </div>
+                            <div id="caffeine-max-box" class="rounded-lg p-4 text-center">
+                                <p class="text-sm text-gray-600">Af daglig maks</p>
+                                <p id="caffeine-percent" class="text-2xl font-bold"></p>
+                            </div>
+                            <div class="bg-purple-100 rounded-lg p-4 text-center">
+                                <p class="text-sm text-gray-600">Kan sove fra kl.</p>
+                                <p id="caffeine-sleep" class="text-2xl font-bold text-purple-700"></p>
+                            </div>
+                            <div class="bg-blue-100 rounded-lg p-4 text-center">
+                                <p class="text-sm text-gray-600">Timer til søvn</p>
+                                <p id="caffeine-hours" class="text-2xl font-bold text-blue-700"></p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-semibold mb-3">📉 Kaffein-nedbrydning over tid</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="border-b">
+                                        <th class="py-2 text-left">Tid</th>
+                                        <th class="py-2 text-left">Timer efter</th>
+                                        <th class="py-2 text-left">Kaffein</th>
+                                        <th class="py-2 text-left">Niveau</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="caffeine-table"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 grid md:grid-cols-2 gap-4 text-sm text-gray-500">
+                    <div>
+                        <h3 class="font-semibold mb-2">☕ Kaffein-fakta:</h3>
+                        <ul class="space-y-1">
+                            <li>• Halveringstid: 5-6 timer</li>
+                            <li>• Maks anbefalet: 400mg/dag</li>
+                            <li>• Gravide: max 200mg/dag</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-2">😴 For god søvn:</h3>
+                        <ul class="space-y-1">
+                            <li>• Undgå kaffein 6 timer før sengetid</li>
+                            <li>• Morgenkaffe har mindst påvirkning</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BMR Calculator -->
+            <section id="bmr" class="calculator-card bg-white rounded-2xl p-6 shadow-lg">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-4xl">🔥</span>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">BMR-beregner</h2>
+                        <p class="text-gray-500">Basalstofskifte</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="bmr-gender" value="male" checked class="w-4 h-4 text-health-green">
+                            <span>Mand</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="bmr-gender" value="female" class="w-4 h-4 text-health-green">
+                            <span>Kvinde</span>
+                        </label>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Alder</label>
+                            <input type="number" id="bmr-age" placeholder="30" 
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-health-green">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Højde (cm)</label>
+                            <input type="number" id="bmr-height" placeholder="175" 
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-health-green">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Vægt (kg)</label>
+                        <input type="number" id="bmr-weight" placeholder="70" 
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-health-green">
+                    </div>
+                    <button onclick="calculateBMR()" 
+                        class="w-full bg-health-green text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                        Beregn BMR
+                    </button>
+                </div>
+                
+                <div id="bmr-result" class="mt-6 hidden">
+                    <div class="result-box bg-gray-50 rounded-lg p-4">
+                        <p class="text-gray-600">Dit basalstofskifte er</p>
+                        <p id="bmr-value" class="text-4xl font-bold text-health-green"></p>
+                        <p class="text-gray-700">kalorier pr. dag</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-sm text-gray-500">
+                    <p>BMR er de kalorier din krop forbrænder i hvile for at opretholde livsfunktioner.</p>
+                </div>
+            </section>
+
             <!-- Ideal Weight Calculator -->
             <section id="idealvaegt" class="calculator-card bg-white rounded-2xl p-6 shadow-lg">
                 <div class="flex items-center gap-3 mb-6">
@@ -295,7 +499,6 @@
                 
                 <div id="ideal-result" class="mt-6 hidden">
                     <div class="result-box bg-gray-50 rounded-lg p-4">
-                        <p class="text-gray-600 mb-3">Din idealvægt baseret på forskellige formler:</p>
                         <div class="space-y-2">
                             <div class="flex justify-between">
                                 <span class="text-gray-700">Devine-formlen:</span>
@@ -305,10 +508,6 @@
                                 <span class="text-gray-700">Robinson-formlen:</span>
                                 <span id="ideal-robinson" class="font-semibold text-health-purple"></span>
                             </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-700">Miller-formlen:</span>
-                                <span id="ideal-miller" class="font-semibold text-health-purple"></span>
-                            </div>
                             <div class="flex justify-between pt-2 border-t mt-2">
                                 <span class="text-gray-700 font-medium">Gennemsnit:</span>
                                 <span id="ideal-average" class="font-bold text-health-purple text-lg"></span>
@@ -316,45 +515,31 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="mt-6 text-sm text-gray-500">
-                    <p>Bemærk: Idealvægt er kun et estimat. Din optimale vægt afhænger også af muskelmasse, kropstype og generel sundhed.</p>
-                </div>
             </section>
 
         </div>
 
-        <!-- Info Section -->
+        <!-- FAQ Section -->
         <section class="mt-16 bg-white rounded-2xl p-8 shadow-lg">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">📚 Om vores beregnere</h2>
-            <div class="grid md:grid-cols-3 gap-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">❓ Ofte stillede spørgsmål</h2>
+            <div class="grid md:grid-cols-2 gap-8">
                 <div>
-                    <h3 class="font-semibold text-lg mb-2">🔒 Privat & sikkert</h3>
-                    <p class="text-gray-600">Alle beregninger sker lokalt i din browser. Vi gemmer ingen data.</p>
+                    <h3 class="font-semibold text-lg mb-2">Hvor meget vand skal jeg drikke om dagen?</h3>
+                    <p class="text-gray-600">Som tommelfingerregel anbefales 30-35ml per kg kropsvægt. En person på 70kg bør drikke ca. 2.3 liter dagligt. Ved motion eller varmt vejr skal du drikke mere.</p>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-lg mb-2">📊 Præcise formler</h3>
-                    <p class="text-gray-600">Vi bruger anerkendte videnskabelige formler som Mifflin-St Jeor og Harris-Benedict.</p>
+                    <h3 class="font-semibold text-lg mb-2">Hvor mange timer søvn har jeg brug for?</h3>
+                    <p class="text-gray-600">Voksne (18-64 år) har typisk brug for 7-9 timers søvn. Teenagere har brug for 8-10 timer, og børn endnu mere. Kvaliteten er lige så vigtig som mængden.</p>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-lg mb-2">💡 Vejledende</h3>
-                    <p class="text-gray-600">Resultaterne er estimater. Kontakt en læge for personlig rådgivning.</p>
+                    <h3 class="font-semibold text-lg mb-2">Hvornår skal jeg stoppe med at drikke kaffe?</h3>
+                    <p class="text-gray-600">Kaffein har en halveringstid på 5-6 timer. For optimal søvn bør du undgå kaffein mindst 6 timer før sengetid. Drikker du kaffe kl. 15, kan det stadig påvirke dig kl. 21.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-2">Er BMI en pålidelig måling?</h3>
+                    <p class="text-gray-600">BMI giver et groft overblik, men tager ikke højde for muskelmasse, kropsbygning eller fedtfordeling. Det er bedst brugt som ét af flere sundhedsmål.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- SEO Content -->
-        <section class="mt-16 prose prose-lg max-w-none">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Ofte stillede spørgsmål</h2>
-            
-            <h3 class="text-xl font-semibold mt-6">Hvad er BMI?</h3>
-            <p class="text-gray-600">BMI (Body Mass Index) er et tal der beskriver forholdet mellem din vægt og højde. Det bruges som en indikator for om du er undervægtig, normalvægtig, overvægtig eller fed. BMI beregnes ved at dividere din vægt i kg med din højde i meter i anden potens.</p>
-            
-            <h3 class="text-xl font-semibold mt-6">Hvad er BMR?</h3>
-            <p class="text-gray-600">BMR (Basal Metabolic Rate) eller basalstofskifte er det antal kalorier din krop forbrænder i hvile for at opretholde grundlæggende livsfunktioner. Det inkluderer vejrtrækning, hjerteslag, blodcirkulation og celleopdeling.</p>
-            
-            <h3 class="text-xl font-semibold mt-6">Hvordan beregner jeg mit kaloriebehov?</h3>
-            <p class="text-gray-600">Dit daglige kaloriebehov beregnes ved at gange dit BMR med en aktivitetsfaktor. Hvis du vil tabe vægt, skal du spise færre kalorier end dit vedligeholdelsesbehov. Typisk anbefales et underskud på 500 kalorier for at tabe ca. 0,5 kg om ugen.</p>
         </section>
     </main>
 
@@ -364,27 +549,29 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4">🏥 Sundhedsberegner.dk</h3>
-                    <p class="text-gray-400">Gratis online sundhedsberegnere. BMI, BMR, kalorieberegner og idealvægt.</p>
+                    <p class="text-gray-400">Gratis sundhedsberegnere. BMI, kalorier, vandindtag, søvn og kaffein.</p>
                 </div>
                 <div>
                     <h3 class="font-semibold mb-4">Beregnere</h3>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#bmi" class="hover:text-white">BMI-beregner</a></li>
-                        <li><a href="#bmr" class="hover:text-white">BMR-beregner</a></li>
                         <li><a href="#kalorier" class="hover:text-white">Kalorieberegner</a></li>
-                        <li><a href="#idealvaegt" class="hover:text-white">Idealvægt</a></li>
+                        <li><a href="#vandindtag" class="hover:text-white">Vandindtag</a></li>
+                        <li><a href="#soevn" class="hover:text-white">Søvnbehov</a></li>
+                        <li><a href="#kaffein" class="hover:text-white">Kaffein</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-semibold mb-4">Information</h3>
+                    <h3 class="font-semibold mb-4">Andre værktøjer</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="/privacy" class="hover:text-white">Privatlivspolitik</a></li>
-                        <li><a href="mailto:kontakt@mahope.dk" class="hover:text-white">Kontakt</a></li>
+                        <li><a href="https://beregner.holstjensen.eu" class="hover:text-white">🧮 Alle Beregnere</a></li>
+                        <li><a href="https://gratisfaktura.dk" class="hover:text-white">📄 Faktura Generator</a></li>
+                        <li><a href="https://kodeord.dk" class="hover:text-white">🔑 Kodeord Generator</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500">
-                <p>&copy; 2025 Sundhedsberegner.dk - En del af mahope.dk</p>
+                <p>© 2026 Sundhedsberegner.dk - En del af <a href="https://mahope.dk" class="hover:text-white">mahope.dk</a></p>
             </div>
         </div>
     </footer>
@@ -403,21 +590,11 @@
             const heightM = height / 100;
             const bmi = weight / (heightM * heightM);
             
-            let category = '';
-            let color = '';
-            if (bmi < 18.5) {
-                category = 'Undervægtig';
-                color = 'text-yellow-600';
-            } else if (bmi < 25) {
-                category = 'Normalvægtig ✓';
-                color = 'text-green-600';
-            } else if (bmi < 30) {
-                category = 'Overvægtig';
-                color = 'text-orange-500';
-            } else {
-                category = 'Fedme';
-                color = 'text-red-500';
-            }
+            let category = '', color = '';
+            if (bmi < 18.5) { category = 'Undervægtig'; color = 'text-yellow-600'; }
+            else if (bmi < 25) { category = 'Normalvægtig ✓'; color = 'text-green-600'; }
+            else if (bmi < 30) { category = 'Overvægtig'; color = 'text-orange-500'; }
+            else { category = 'Fedme'; color = 'text-red-500'; }
             
             document.getElementById('bmi-value').textContent = bmi.toFixed(1);
             document.getElementById('bmi-category').textContent = category;
@@ -425,24 +602,18 @@
             document.getElementById('bmi-result').classList.remove('hidden');
         }
 
-        // BMR Calculator (Mifflin-St Jeor)
+        // BMR Calculator
         function calculateBMR() {
             const gender = document.querySelector('input[name="bmr-gender"]:checked').value;
             const age = parseFloat(document.getElementById('bmr-age').value);
             const height = parseFloat(document.getElementById('bmr-height').value);
             const weight = parseFloat(document.getElementById('bmr-weight').value);
             
-            if (!age || !height || !weight) {
-                alert('Udfyld venligst alle felter');
-                return;
-            }
+            if (!age || !height || !weight) { alert('Udfyld venligst alle felter'); return; }
             
-            let bmr;
-            if (gender === 'male') {
-                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-            } else {
-                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
-            }
+            let bmr = gender === 'male' 
+                ? 10 * weight + 6.25 * height - 5 * age + 5
+                : 10 * weight + 6.25 * height - 5 * age - 161;
             
             document.getElementById('bmr-value').textContent = Math.round(bmr);
             document.getElementById('bmr-result').classList.remove('hidden');
@@ -456,17 +627,11 @@
             const weight = parseFloat(document.getElementById('cal-weight').value);
             const activity = parseFloat(document.getElementById('cal-activity').value);
             
-            if (!age || !height || !weight) {
-                alert('Udfyld venligst alle felter');
-                return;
-            }
+            if (!age || !height || !weight) { alert('Udfyld venligst alle felter'); return; }
             
-            let bmr;
-            if (gender === 'male') {
-                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-            } else {
-                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
-            }
+            let bmr = gender === 'male'
+                ? 10 * weight + 6.25 * height - 5 * age + 5
+                : 10 * weight + 6.25 * height - 5 * age - 161;
             
             const maintenance = Math.round(bmr * activity);
             
@@ -476,75 +641,173 @@
             document.getElementById('cal-result').classList.remove('hidden');
         }
 
+        // Water Intake Calculator
+        function calculateWater() {
+            const weight = parseFloat(document.getElementById('water-weight').value);
+            const activity = parseFloat(document.getElementById('water-activity').value);
+            const climate = parseFloat(document.getElementById('water-climate').value);
+            
+            if (!weight) { alert('Indtast din vægt'); return; }
+            
+            const basisMl = weight * 33 * activity * climate;
+            const liters = (basisMl / 1000).toFixed(1);
+            const glasses = Math.ceil(basisMl / 250);
+            
+            document.getElementById('water-liters').textContent = liters + ' L';
+            document.getElementById('water-glasses').textContent = glasses + ' 🥛';
+            
+            // Schedule
+            const schedule = document.getElementById('water-schedule');
+            const morning = Math.round(glasses * 0.35);
+            const midday = Math.round(glasses * 0.25);
+            const afternoon = Math.round(glasses * 0.25);
+            const evening = Math.round(glasses * 0.15);
+            
+            schedule.innerHTML = `
+                <div><p class="text-xs text-gray-500">Morgen</p><p class="font-bold text-blue-600">${morning} glas</p></div>
+                <div><p class="text-xs text-gray-500">Formiddag</p><p class="font-bold text-blue-600">${midday} glas</p></div>
+                <div><p class="text-xs text-gray-500">Eftermiddag</p><p class="font-bold text-blue-600">${afternoon} glas</p></div>
+                <div><p class="text-xs text-gray-500">Aften</p><p class="font-bold text-blue-600">${evening} glas</p></div>
+            `;
+            
+            document.getElementById('water-result').classList.remove('hidden');
+        }
+
+        // Sleep Calculator
+        function calculateSleep() {
+            const age = parseInt(document.getElementById('sleep-age').value);
+            const wakeTime = document.getElementById('sleep-wake').value;
+            
+            if (!age || !wakeTime) { alert('Udfyld alle felter'); return; }
+            
+            // Recommended sleep by age
+            let recommended;
+            if (age < 14) recommended = '9-11';
+            else if (age < 18) recommended = '8-10';
+            else if (age < 65) recommended = '7-9';
+            else recommended = '7-8';
+            
+            document.getElementById('sleep-recommended').textContent = recommended + ' timer';
+            
+            // Calculate bedtimes (4-6 sleep cycles of 90min + 15min to fall asleep)
+            const [wakeH, wakeM] = wakeTime.split(':').map(Number);
+            const wakeMinutes = wakeH * 60 + wakeM;
+            
+            const timesContainer = document.getElementById('sleep-times');
+            timesContainer.innerHTML = '';
+            
+            for (let cycles = 4; cycles <= 6; cycles++) {
+                const sleepMinutes = cycles * 90 + 15;
+                let bedMinutes = wakeMinutes - sleepMinutes;
+                if (bedMinutes < 0) bedMinutes += 24 * 60;
+                
+                const bedH = Math.floor(bedMinutes / 60);
+                const bedM = bedMinutes % 60;
+                const timeStr = `${bedH.toString().padStart(2, '0')}:${bedM.toString().padStart(2, '0')}`;
+                
+                const isRecommended = cycles === 5;
+                timesContainer.innerHTML += `
+                    <div class="p-3 rounded-lg text-center ${isRecommended ? 'bg-purple-200 border-2 border-purple-400' : 'bg-white border'}">
+                        <p class="text-2xl font-bold text-purple-700">${timeStr}</p>
+                        <p class="text-xs text-gray-500">${(cycles * 1.5).toFixed(1)}t søvn</p>
+                        ${isRecommended ? '<span class="text-xs bg-purple-500 text-white px-2 py-0.5 rounded mt-1 inline-block">⭐ Anbefalet</span>' : ''}
+                    </div>
+                `;
+            }
+            
+            document.getElementById('sleep-result').classList.remove('hidden');
+        }
+
+        // Caffeine Calculator
+        function calculateCaffeine() {
+            const caffeinePer = parseInt(document.getElementById('caffeine-drink').value);
+            const count = parseInt(document.getElementById('caffeine-count').value) || 1;
+            const time = document.getElementById('caffeine-time').value;
+            
+            const totalCaffeine = caffeinePer * count;
+            const halfLife = 5.5; // hours
+            
+            const [intakeH, intakeM] = time.split(':').map(Number);
+            const intakeMinutes = intakeH * 60 + intakeM;
+            
+            // Calculate when caffeine drops below 50mg
+            const hoursToSleep = Math.log(50 / totalCaffeine) / Math.log(0.5) * halfLife;
+            let sleepMinutes = intakeMinutes + Math.max(0, hoursToSleep) * 60;
+            sleepMinutes = sleepMinutes % (24 * 60);
+            const sleepH = Math.floor(sleepMinutes / 60);
+            const sleepM = Math.floor(sleepMinutes % 60);
+            
+            const percentOfMax = Math.round((totalCaffeine / 400) * 100);
+            const overMax = totalCaffeine > 400;
+            
+            document.getElementById('caffeine-total').textContent = totalCaffeine + ' mg';
+            document.getElementById('caffeine-percent').textContent = percentOfMax + '%';
+            document.getElementById('caffeine-percent').className = `text-2xl font-bold ${overMax ? 'text-red-700' : 'text-green-700'}`;
+            document.getElementById('caffeine-max-box').className = `rounded-lg p-4 text-center ${overMax ? 'bg-red-100' : 'bg-green-100'}`;
+            document.getElementById('caffeine-sleep').textContent = totalCaffeine <= 50 ? time : `${sleepH.toString().padStart(2, '0')}:${sleepM.toString().padStart(2, '0')}`;
+            document.getElementById('caffeine-hours').textContent = Math.max(0, hoursToSleep).toFixed(1);
+            
+            // Build table
+            const table = document.getElementById('caffeine-table');
+            table.innerHTML = '';
+            
+            for (let hours = 0; hours <= 12; hours += 2) {
+                let timeMinutes = (intakeMinutes + hours * 60) % (24 * 60);
+                const h = Math.floor(timeMinutes / 60);
+                const m = Math.floor(timeMinutes % 60);
+                const timeStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+                
+                const remaining = Math.round(totalCaffeine * Math.pow(0.5, hours / halfLife));
+                const percent = Math.round((remaining / totalCaffeine) * 100);
+                
+                let barColor = remaining > 100 ? 'bg-amber-500' : remaining > 50 ? 'bg-yellow-400' : 'bg-green-400';
+                
+                table.innerHTML += `
+                    <tr class="border-b">
+                        <td class="py-2 font-medium">${timeStr}</td>
+                        <td class="py-2 text-gray-500">+${hours}t</td>
+                        <td class="py-2">${remaining} mg</td>
+                        <td class="py-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="${barColor} h-full rounded-full" style="width: ${percent}%"></div>
+                                </div>
+                                <span class="text-xs text-gray-500">${percent}%</span>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }
+            
+            document.getElementById('caffeine-result').classList.remove('hidden');
+        }
+
         // Ideal Weight Calculator
         function calculateIdealWeight() {
             const gender = document.querySelector('input[name="ideal-gender"]:checked').value;
             const height = parseFloat(document.getElementById('ideal-height').value);
             
-            if (!height) {
-                alert('Indtast venligst din højde');
-                return;
-            }
+            if (!height) { alert('Indtast venligst din højde'); return; }
             
             const heightInches = height / 2.54;
             const heightOver5ft = heightInches - 60;
             
-            let devine, robinson, miller;
-            
+            let devine, robinson;
             if (gender === 'male') {
                 devine = 50 + 2.3 * heightOver5ft;
                 robinson = 52 + 1.9 * heightOver5ft;
-                miller = 56.2 + 1.41 * heightOver5ft;
             } else {
                 devine = 45.5 + 2.3 * heightOver5ft;
                 robinson = 49 + 1.7 * heightOver5ft;
-                miller = 53.1 + 1.36 * heightOver5ft;
             }
             
-            const average = (devine + robinson + miller) / 3;
+            const average = (devine + robinson) / 2;
             
             document.getElementById('ideal-devine').textContent = devine.toFixed(1) + ' kg';
             document.getElementById('ideal-robinson').textContent = robinson.toFixed(1) + ' kg';
-            document.getElementById('ideal-miller').textContent = miller.toFixed(1) + ' kg';
             document.getElementById('ideal-average').textContent = average.toFixed(1) + ' kg';
             document.getElementById('ideal-result').classList.remove('hidden');
         }
     </script>
-<!-- Shared Footer - Holstjensen Tools Network -->
-<footer id="shared-footer" class="mt-16 border-t border-gray-200 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 py-12">
-        <div class="mb-8">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">ðŸ› ï¸ Andre gratis vÃ¦rktÃ¸jer</h3>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                <a href="https://gratisfaktura.dk" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ“„ Faktura Generator</a>
-                <a href="https://kodeord.dk" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ” Kodeord Generator</a>
-                <a href="https://countdowntimer.dk" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">â° Countdown Timer</a>
-                <a href="https://loenberegner.dk" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ’° LÃ¸nberegner</a>
-                <a href="https://minberegner.dk" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ§® Alle Beregnere</a>
-                <a href="https://ai-tools.dk" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ¤– AI VÃ¦rktÃ¸jer</a>
-                <a href="https://whitenoise.dk" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ”Š White Noise</a>
-                <a href="https://rejsermedborn.dk" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">âœˆï¸ Rejser m. BÃ¸rn</a>
-                <a href="https://notiondk.dk" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ“‹ Notion Templates</a>
-                <a href="https://valuta.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ’± Valuta Omregner</a>
-                <a href="https://enheder.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ“ Enheder Omregner</a>
-                <a href="https://timer.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">â±ï¸ Timer/Stopur</a>
-                <a href="https://citater.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ’¬ Citater</a>
-                <a href="https://noter.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ“ Noter App</a>
-                <a href="https://farver.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸŽ¨ Farve Palette</a>
-                <a href="https://lorem.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ“œ Lorem Ipsum</a>
-                <a href="https://synonymer.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ“š Synonymer</a>
-                <a href="https://sundhedsberegner.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ¥ Sundhedsberegner</a>
-                <a href="https://qr.holstjensen.eu" class="hover:bg-white p-2 rounded-lg transition text-sm text-gray-600 hover:text-blue-600">ðŸ“± QR Generator</a>
-            </div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between items-center pt-6 border-t border-gray-200 text-sm text-gray-500">
-            <p>&copy; 2025 <a href="https://mahope.dk" class="hover:text-blue-600">Mahope.dk</a> - Gratis online vÃ¦rktÃ¸jer</p>
-            <div class="flex gap-4 mt-2 sm:mt-0">
-                <a href="https://privacy.holstjensen.eu" class="hover:text-blue-600">Privatlivspolitik</a>
-                <a href="mailto:kontakt@mahope.dk" class="hover:text-blue-600">Kontakt</a>
-            </div>
-        </div>
-    </div>
-</footer>
 </body>
 </html>
